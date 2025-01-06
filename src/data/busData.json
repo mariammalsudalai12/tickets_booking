@@ -1,0 +1,134 @@
+[
+  { 
+    "id": 1, 
+    "name": "Luxury Express", 
+    "startTime": "10:00 AM", 
+    "endTime": "4:00 PM", 
+    "duration": "6 hours", 
+    "price": "₹1200",
+    "seats": [
+      { "seatId": "1A", "type": "upper", "gender": "male", "booked": false },
+      { "seatId": "1B", "type": "upper", "gender": "female", "booked": false },
+      { "seatId": "2A", "type": "lower", "gender": "male", "booked": true },
+      { "seatId": "2B", "type": "lower", "gender": "female", "booked": false },
+      { "seatId": "3A", "type": "upper", "gender": "male", "booked": false },
+      { "seatId": "3B", "type": "upper", "gender": "female", "booked": false },
+      { "seatId": "4A", "type": "lower", "gender": "male", "booked": false },
+      { "seatId": "4B", "type": "lower", "gender": "female", "booked": false },
+      { "seatId": "5A", "type": "upper", "gender": "male", "booked": true },
+      { "seatId": "5B", "type": "lower", "gender": "male", "booked": false },
+      { "seatId": "6A", "type": "lower", "gender": "female", "booked": false },
+      { "seatId": "6B", "type": "upper", "gender": "male", "booked": false }
+    ]
+  },
+  { 
+    "id": 2, 
+    "name": "Fast Track", 
+    "startTime": "12:00 PM", 
+    "endTime": "5:30 PM", 
+    "duration": "5.5 hours", 
+    "price": "₹1000",
+    "seats": [
+      { "seatId": "1A", "type": "upper", "gender": "female", "booked": false },
+      { "seatId": "1B", "type": "upper", "gender": "male", "booked": true },
+      { "seatId": "2A", "type": "lower", "gender": "female", "booked": false },
+      { "seatId": "2B", "type": "lower", "gender": "male", "booked": true },
+      { "seatId": "3A", "type": "upper", "gender": "female", "booked": false },
+      { "seatId": "3B", "type": "upper", "gender": "male", "booked": false },
+      { "seatId": "4A", "type": "lower", "gender": "female", "booked": false },
+      { "seatId": "4B", "type": "upper", "gender": "male", "booked": false },
+      { "seatId": "5A", "type": "upper", "gender": "male", "booked": false },
+      { "seatId": "5B", "type": "upper", "gender": "female", "booked": false },
+      { "seatId": "6A", "type": "upper", "gender": "female", "booked": false },
+      { "seatId": "6B", "type": "upper", "gender": "male", "booked": false }
+    ]
+  },
+  { 
+    "id": 3, 
+    "name": "Omnibus", 
+    "startTime": "11:00 AM", 
+    "endTime": "2:00 PM", 
+    "duration": "3 hours", 
+    "price": "₹1200",
+    "seats": [
+      { "seatId": "1A", "type": "upper", "gender": "male", "booked": false },
+      { "seatId": "1B", "type": "upper", "gender": "female", "booked": false },
+      { "seatId": "2A", "type": "lower", "gender": "male", "booked": true },
+      { "seatId": "2B", "type": "lower", "gender": "female", "booked": false },
+      { "seatId": "3A", "type": "upper", "gender": "male", "booked": false },
+      { "seatId": "3B", "type": "upper", "gender": "female", "booked": false },
+      { "seatId": "4A", "type": "lower", "gender": "male", "booked": false },
+      { "seatId": "4B", "type": "lower", "gender": "female", "booked": false },
+      { "seatId": "5A", "type": "upper", "gender": "male", "booked": true },
+      { "seatId": "5B", "type": "lower", "gender": "male", "booked": false },
+      { "seatId": "6A", "type": "lower", "gender": "female", "booked": false },
+      { "seatId": "6B", "type": "upper", "gender": "male", "booked": false }
+    ]
+  },
+  { 
+    "id": 4, 
+    "name": "Express Line", 
+    "startTime": "9:00 AM", 
+    "endTime": "3:00 PM", 
+    "duration": "6 hours", 
+    "price": "₹1300",
+    "seats": [
+      { "seatId": "1A", "type": "upper", "gender": "male", "booked": false },
+      { "seatId": "1B", "type": "upper", "gender": "female", "booked": false },
+      { "seatId": "2A", "type": "lower", "gender": "male", "booked": true },
+      { "seatId": "2B", "type": "lower", "gender": "female", "booked": false },
+      { "seatId": "3A", "type": "upper", "gender": "male", "booked": false },
+      { "seatId": "3B", "type": "upper", "gender": "female", "booked": false },
+      { "seatId": "4A", "type": "lower", "gender": "male", "booked": false },
+      { "seatId": "4B", "type": "lower", "gender": "female", "booked": false },
+      { "seatId": "5A", "type": "upper", "gender": "male", "booked": true },
+      { "seatId": "5B", "type": "lower", "gender": "male", "booked": false },
+      { "seatId": "6A", "type": "lower", "gender": "female", "booked": false },
+      { "seatId": "6B", "type": "upper", "gender": "male", "booked": false }
+    ]
+  },
+  { 
+    "id": 5,
+    "name": "Silver Shuttle",
+    "startTime": "8:30 AM", 
+    "endTime": "2:30 PM", 
+    "duration": "6 hours", 
+    "price": "₹1100",
+    "seats": [
+      { "seatId": "1A", "type": "upper", "gender": "female", "booked": false },
+      { "seatId": "1B", "type": "upper", "gender": "male", "booked": false },
+      { "seatId": "2A", "type": "lower", "gender": "female", "booked": true },
+      { "seatId": "2B", "type": "lower", "gender": "male", "booked": false },
+      { "seatId": "3A", "type": "upper", "gender": "male", "booked": false },
+      { "seatId": "3B", "type": "upper", "gender": "female", "booked": false },
+      { "seatId": "4A", "type": "lower", "gender": "male", "booked": false },
+      { "seatId": "4B", "type": "lower", "gender": "female", "booked": false },
+      { "seatId": "5A", "type": "upper", "gender": "female", "booked": true },
+      { "seatId": "5B", "type": "lower", "gender": "male", "booked": false },
+      { "seatId": "6A", "type": "lower", "gender": "female", "booked": false },
+      { "seatId": "6B", "type": "upper", "gender": "male", "booked": false }
+    ]
+  },
+  { 
+    "id": 6,
+    "name": "Golden Route",
+    "startTime": "7:45 AM", 
+    "endTime": "1:45 PM", 
+    "duration": "6 hours", 
+    "price": "₹1250",
+    "seats": [
+      { "seatId": "1A", "type": "upper", "gender": "male", "booked": false },
+      { "seatId": "1B", "type": "upper", "gender": "female", "booked": false },
+      { "seatId": "2A", "type": "lower", "gender": "female", "booked": false },
+      { "seatId": "2B", "type": "lower", "gender": "male", "booked": true },
+      { "seatId": "3A", "type": "upper", "gender": "female", "booked": false },
+      { "seatId": "3B", "type": "upper", "gender": "male", "booked": false },
+      { "seatId": "4A", "type": "lower", "gender": "female", "booked": false },
+      { "seatId": "4B", "type": "upper", "gender": "male", "booked": false },
+      { "seatId": "5A", "type": "upper", "gender": "male", "booked": false },
+      { "seatId": "5B", "type": "upper", "gender": "female", "booked": false },
+      { "seatId": "6A", "type": "lower", "gender": "female", "booked": false },
+      { "seatId": "6B", "type": "upper", "gender": "male", "booked": false }
+    ]
+  }
+]

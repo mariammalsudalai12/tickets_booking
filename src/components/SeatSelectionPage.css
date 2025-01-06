@@ -1,0 +1,94 @@
+/* Container adjustments for better spacing and responsiveness */
+.seat-selection-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Card for each seat */
+  .card {
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Seat icon background colors */
+  .seat-icon {
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .seat.booked {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  .seat.available {
+    background-color: transparent;
+  }
+
+  .ul-list{
+    list-style: none;
+    text-align: center;
+  }
+
+  .mt-4{
+    margin-top: 30px;
+  }
+  
+  .para{
+    text-align: center;
+    font-weight: bold;
+  }
+
+
+  .my-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  @media (max-width: 767px) {
+    .seat-selection-container {
+      padding: 15px;
+    }
+    .col-6 {
+      flex: 0 0 50%;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .col-6 {
+      flex: 0 0 100%;
+    }
+  }
+  
+  .form-container {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  input.form-controls {
+    margin-bottom: 15px;
+    display: flex;
+    width: 300px;
+    height: 40px;
+  }
+
+  .butn{
+    padding: 20px;
+    font-size: 20px;
+    border: none;
+    background-color: red;
+    color: white;
+  }
+  
+  @media (max-width: 767px) {
+    .form-container {
+      padding: 15px;
+    }
+  }
+  
