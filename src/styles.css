@@ -17,8 +17,8 @@
 }
 
 .navbar-logo{
-  width: 90px;
-  border-radius: 10px;
+  width: 70px;
+  border-radius: 5px;
   margin-left: 20px;
 }
 
@@ -139,132 +139,109 @@ h2 {
   margin: 20px 0;
 }
 
-.card {
-  border-radius: 12px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+.offers-section {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.offers-section h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.offer-card {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease; 
+}
+
+.card:hover {
+  transform: scale(1.05);
 }
 
 .card-img-top {
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-  height: 150px;
-  object-fit: cover;
+  width: 100%;
+  height: 200px;
+  object-fit: cover; 
 }
 
 .card-body {
-  padding: 15px;
-  text-align: center;
+  padding: 1rem;
 }
 
-.offer-card{
-  display: flex;
-  gap: 30px;
-}
 .card-title {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: bold;
 }
 
 .card-text {
   font-size: 1rem;
-  color: #555;
+  color: #6c757d;
 }
-
 
 @media (max-width: 768px) {
-  .card {
-    width: 100%; 
-  }
-
   .offer-card {
-    flex-direction: column;
-    gap: 20px; 
+    gap: 1rem;
   }
 
-  .card-img-top {
-    height: 120px; 
-  }
-
-  .card-body {
-    padding: 12px; 
-  }
-
-  .card-title {
-    font-size: 1rem; 
-  }
-
-  .card-text {
-    font-size: 0.9rem; 
+  .card {
+    flex: 1 1 calc(50% - 1rem);
   }
 }
 
-@media (max-width: 576px) {
-  .card-title {
-    font-size: 0.9rem;
-  }
-
-  .card-text {
-    font-size: 0.8rem; 
-  }
-
-  .card-img-top {
-    height: 100px; 
+@media (max-width: 480px) {
+  .card {
+    flex: 1 1 100%; 
   }
 }
 
-.facilities-section {
-  padding: 40px 0;
+.facilities-heading {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.facilities-wrapper {
   display: flex;
-  justify-content: center; 
-  gap: 30px; 
-  flex-wrap: wrap; 
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.facility-item {
+  flex: 1 1 calc(25% - 1.5rem);
+  max-width: calc(25% - 1.5rem);
+  box-sizing: border-box;
 }
 
 .facility-icon {
-  background-color: #ff5733;
-  border-radius: 50%;
-  padding: 20px;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 80px; 
-  height: 80px;
+  margin-bottom: 10px;
+  color: red;
+  margin-top: 30px;
 }
 
-.facility-icon .fa {
-  font-size: 2.5rem;
+@media (max-width: 768px) {
+  .facility-item {
+    flex: 1 1 45%;
+    max-width: 45%;
+  }
 }
 
-.facility-text {
-  margin-top: 10px;
-}
-
-.faci-icn{
-  font-size: 30px;
-}
-
-h5 {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-.card-body {
-  padding: 15px;
-}
-
-.card-text {
-  font-size: 1rem;
-  color: #555;
-}
-
-h3{
-  font-size: 3rem;
-  text-align: center;
+@media (max-width: 480px) {
+  .facility-item {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 768px) {
@@ -309,7 +286,8 @@ h3{
   background-color: #f4f4f4; 
   color: #000; 
   margin-top: 90px;
-  box-shadow: 10px 10px 10px 10px  rgba(0, 0, 0, 0.173);
+  box-shadow: 2px 2px 3px 2px  rgba(0, 0, 0, 0.173);
+  overflow: hidden;
 }
 
 .footer-top {
@@ -365,8 +343,9 @@ h3{
     padding: 20px 50px;
   }
 
-  .footer-info p {
-    font-size: 20px;
+  .footer-para{
+    text-align: center;
+    font-size: 25px;
   }
 
   .social-icons {
@@ -409,8 +388,4 @@ h3{
   .footer-bottom p {
     font-size: 12px; 
   }
-}
-
-.my-row{
-  display: flex;
 }

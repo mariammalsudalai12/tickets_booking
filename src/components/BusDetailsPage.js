@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaMapMarkerAlt, FaCalendarAlt } from 'react-icons/fa';
 import busData from '../data/busData.json';
-import './BusDetailsPage.css' 
+import './BusDetailsPage.css';
 
 const BusDetailsPage = () => {
   const [source, setSource] = useState('');
@@ -11,33 +11,50 @@ const BusDetailsPage = () => {
   const [busDetails, setBusDetails] = useState([]);
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [selectedBusId, setSelectedBusId] = useState(null); 
+  const [selectedBusId, setSelectedBusId] = useState(null);
+  const [showNoBusesMessage, setShowNoBusesMessage] = useState(false);
+ 
   const navigate = useNavigate();
 
   useEffect(() => {
     const savedSource = localStorage.getItem('source');
     const savedDestination = localStorage.getItem('destination');
     const savedDate = localStorage.getItem('date');
-
+    
     if (savedSource && savedDestination && savedDate) {
       setSource(savedSource);
       setDestination(savedDestination);
       setDate(savedDate);
-      setBusDetails(busData); 
+
+      const filteredBuses = busData.filter(bus => 
+        bus.source === savedSource && 
+        bus.destination === savedDestination && 
+        Array.isArray(bus.availableDate) && bus.availableDate.includes(savedDate)
+      );
+
+      if (filteredBuses.length > 0) {
+        setBusDetails(filteredBuses);
+        
+        const savedBusId = localStorage.getItem('selectedBusId');
+        const savedSeats = JSON.parse(localStorage.getItem('selectedSeats')) || [];
+        const savedPrice = localStorage.getItem('totalPrice') || 0;
+
+        if (savedBusId) {
+          setSelectedBusId(savedBusId);
+          setSelectedSeats(savedSeats);
+          setTotalPrice(savedPrice);
+        }
+
+        setShowNoBusesMessage(false);
+      } else {
+        if (!showNoBusesMessage) {
+          setShowNoBusesMessage(true);
+        }
+      }
     } else {
-      navigate('/'); 
+      navigate('/');
     }
-
-    const savedBusId = localStorage.getItem('selectedBusId');
-    const savedSeats = JSON.parse(localStorage.getItem('selectedSeats')) || [];
-    const savedPrice = localStorage.getItem('totalPrice') || 0;
-
-    if (savedBusId) {
-      setSelectedBusId(savedBusId);
-      setSelectedSeats(savedSeats);
-      setTotalPrice(savedPrice);
-    }
-  }, [navigate]);
+  }, [navigate, showNoBusesMessage]);
 
   const handleViewSeats = (bus) => {
     localStorage.setItem('selectedBusId', bus.id);
@@ -61,13 +78,11 @@ const BusDetailsPage = () => {
     localStorage.setItem('totalPrice', updatedPrice);
   };
 
-  const handleBookNow = (bus) => {
-    alert(`Booking for ${bus.name} is under development.`);
- };
+  
 
   return (
     <div className="container my-5">
-      <h2 className="text-center mb-4">Bus Details for Your Trip</h2>
+     <h2 className="text-center mb-4">Bus Details for Your Trip</h2>
 
       <div className="text-center mb-4">
         <p><FaMapMarkerAlt /> {source} to {destination}</p>
@@ -85,8 +100,8 @@ const BusDetailsPage = () => {
               <div className="card shadow-lg flex-fill">
                 <div className="card-body busdet-card">
                   <h5 className="card-title">{bus.name}</h5>
-                  <p className="card-text">Start Time: {bus.startTime}</p>
-                  <p className="card-text">End Time: {bus.endTime}</p>
+                  <p className="card-text">Departure Time: {bus.startTime}</p>
+                  <p className="card-text">Arrival Time: {bus.endTime}</p>
                   <p className="card-text">Duration: {bus.duration}</p>
                   <p className="card-text">Price: {bus.price}</p>
 
@@ -108,13 +123,18 @@ const BusDetailsPage = () => {
                     aria-label="View available seats"
                   >
                     View Seats
-                  </button> 
+                  </button>
                 </div>
               </div>
             </div>
           );
         })}
       </div>
+      {showNoBusesMessage && (
+        <div className="no-buses-message">
+          No buses available for the selected route.
+        </div>
+      )}
     </div>
   );
 };

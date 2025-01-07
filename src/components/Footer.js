@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa'; // Import social media icons
+import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa'; 
 import logo from './logo.png';
 
 const Footer = () => {
@@ -29,7 +29,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>&copy; 2025 RedBus Ticket Booking. All Rights Reserved.</p>
+        <p className='footer-para'>&copy; 2025 RedBus Ticket Booking. All Rights Reserved.</p>
       </div>
     </footer>
   );

@@ -9,8 +9,9 @@ const SeatSelectionPage = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [seatGenderInfo, setSeatGenderInfo] = useState('');
   const [showForm, setShowForm] = useState(false);
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [phone, setPhone] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,27 +31,36 @@ const SeatSelectionPage = () => {
       : [...selectedSeats, seat.seatId];
 
     setSelectedSeats(newSelectedSeats);
-    const price = parseInt(bus.price.replace('₹', ''));
+    const price = parseInt(bus.price.replace('₹', '').trim(), 10);
     setTotalPrice(newSelectedSeats.length * price);
     setSeatGenderInfo(seat.gender === 'male' ? 'Male Seat' : seat.gender === 'female' ? 'Female Seat' : 'Unspecified Gender');
   };
 
   const handleBooking = () => {
+    const updatedSeats = bus.seats.map(seat => {
+      if (selectedSeats.includes(seat.seatId)) {
+        return { ...seat, booked: true }; 
+      }
+      return seat;
+    });
+
+    setBus({ ...bus, seats: updatedSeats });
+
     setShowForm(true);
   };
 
   const handleFormSubmit = () => {
-    if (!email || !password) {
+    if (!email || !phone) {
       alert('Please fill in all fields!');
       return;
     }
 
-    if (!email.includes('@') || password.length < 8) {
-      alert('Invalid email or password!');
+    if (!validateEmail(email) || !validatePhone(phone)) {
+      alert('Invalid email or phone number!');
       return;
     }
 
-    const userDetails = { email, password };
+    const userDetails = { name, email, phone };
     localStorage.setItem('userDetails', JSON.stringify(userDetails));
 
     const ticketDetails = {
@@ -62,8 +72,14 @@ const SeatSelectionPage = () => {
 
     localStorage.setItem('ticketDetails', JSON.stringify(ticketDetails));
     alert('Booking Successful! Redirecting to ticket details page.');
+
+    setEmail('');
+    setPhone('');
     navigate('/ticket-details');
   };
+
+  const validateEmail = (email) => /\S+@\S+\.\S+/.test(email);
+  const validatePhone = (phone) => /^\d{10}$/.test(phone);
 
   if (!bus) {
     return <div>Loading...</div>;
@@ -84,9 +100,7 @@ const SeatSelectionPage = () => {
         {bus.seats.filter(seat => seat.type === 'upper').map((seat) => (
           <div className="col-6 col-md-2 mb-3" key={seat.seatId}>
             <div
-              className={`card ${seat.booked ? 'bg-light' : ''} ${
-                selectedSeats.includes(seat.seatId) ? 'border-primary' : ''
-              }`}
+              className={`card ${seat.booked ? 'bg-light' : ''} ${selectedSeats.includes(seat.seatId) ? 'border-primary' : ''}`}
               style={{ cursor: seat.booked ? 'not-allowed' : 'pointer' }}
             >
               <div className="card-body text-center">
@@ -104,7 +118,10 @@ const SeatSelectionPage = () => {
                   }}
                 >
                   {seat.booked ? (
-                    <div className="seat booked">B</div>
+                    <div className="seat booked">
+                      <i className="fas fa-times-circle"></i> 
+                      B
+                    </div>
                   ) : (
                     <div className="seat available">
                       <i className="fas fa-chair"></i>
@@ -123,9 +140,7 @@ const SeatSelectionPage = () => {
         {bus.seats.filter(seat => seat.type === 'lower').map((seat) => (
           <div className="col-6 col-md-2 mb-3" key={seat.seatId}>
             <div
-              className={`card ${seat.booked ? 'bg-light' : ''} ${
-                selectedSeats.includes(seat.seatId) ? 'border-primary' : ''
-              }`}
+              className={`card ${seat.booked ? 'bg-light' : ''} ${selectedSeats.includes(seat.seatId) ? 'border-primary' : ''}`}
               style={{ cursor: seat.booked ? 'not-allowed' : 'pointer' }}
             >
               <div className="card-body text-center">
@@ -143,7 +158,10 @@ const SeatSelectionPage = () => {
                   }}
                 >
                   {seat.booked ? (
-                    <div className="seat booked">B</div>
+                    <div className="seat booked">
+                      <i className="fas fa-times-circle"></i> 
+                      B
+                    </div>
                   ) : (
                     <div className="seat available">
                       <i className="fas fa-chair"></i>
@@ -164,20 +182,20 @@ const SeatSelectionPage = () => {
             {selectedSeats.map((seatId) => {
               const seat = bus.seats.find((s) => s.seatId === seatId);
               return (
-                <li key={seatId} className='ul-list'>
+                <li key={seatId} className="ul-list">
                   {seatId} - {seat.type === 'upper' ? 'Upper Deck' : 'Lower Deck'}
                 </li>
               );
             })}
           </ul>
-          <p className='para'>Total Price: ₹{totalPrice}</p>
+          <p className="para">Total Price: ₹{totalPrice}</p>
         </div>
       )}
 
       <div className="text-center mt-4">
         <button
           className="btn btn-success"
-          disabled={selectedSeats.length === 0}
+          disabled={selectedSeats.length === 0 || totalPrice <= 0}
           onClick={handleBooking}
         >
           Book Now
@@ -186,7 +204,7 @@ const SeatSelectionPage = () => {
 
       {showForm && (
         <div className="form-container mt-4">
-          <h4 className="text-center">Enter Your Details</h4>
+          <h4 className="text-center">Verify Details</h4>
           <form onSubmit={(e) => e.preventDefault()}>
             <div className="mb-3">
               <label>Email:</label>
@@ -198,12 +216,12 @@ const SeatSelectionPage = () => {
               />
             </div>
             <div className="mb-3">
-              <label>Password:</label>
+              <label>Phone Number:</label>
               <input
-                type="password"
+                type="text"
                 className="form-controls"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
               />
             </div>
             <button className="butn" onClick={handleFormSubmit}>
@@ -217,3 +235,5 @@ const SeatSelectionPage = () => {
 };
 
 export default SeatSelectionPage;
+
+

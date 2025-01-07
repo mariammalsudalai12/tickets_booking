@@ -1,10 +1,8 @@
-/* Container adjustments for better spacing and responsiveness */
 .seat-selection-container {
     max-width: 1200px;
     margin: 0 auto;
   }
   
-  /* Card for each seat */
   .card {
     cursor: pointer;
     transition: transform 0.3s;
@@ -14,7 +12,6 @@
     transform: scale(1.05);
   }
   
-  /* Seat icon background colors */
   .seat-icon {
     padding: 10px;
     border-radius: 5px;
@@ -66,25 +63,67 @@
   }
   
   .form-container {
-    background: #f9f9f9;
+    background: white;
+    box-shadow: 0px 3px 3px 3px rgba(0, 0, 0, 0.063);
     padding: 20px;
     border-radius: 8px;
+    width: 520px;
+    margin: auto;
+    align-items: center;
+    margin-top: 30px;
+    align-items: center;
+    justify-content: center;
   }
   
   input.form-controls {
     margin-bottom: 15px;
     display: flex;
-    width: 300px;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.196);
     height: 40px;
+    padding: 0 10px;
   }
-
-  .butn{
-    padding: 20px;
-    font-size: 20px;
+  
+  .butn {
+    padding: 15px;
+    font-size: 18px;
     border: none;
     background-color: red;
     color: white;
+    max-width: 200px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
   }
+  
+  .butn:hover {
+    background-color:rgb(214, 38, 38);
+  }
+  
+  @media (max-width: 768px) {
+    .form-container {
+      padding: 15px;
+      max-width: 90%;
+    }
+  
+    input.form-controls, .butn {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .form-container {
+      max-width: 100%;
+    }
+  
+    .butn {
+      font-size: 16px;
+      padding: 12px;
+    }
+  }
+  
   
   @media (max-width: 767px) {
     .form-container {
